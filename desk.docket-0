@@ -1,0 +1,11 @@
+:~
+  title+'pona'
+  info+'A toki pona grammar and construction tool.'
+  color+0x70.b1a5
+  site+/pona
+  image+'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Toki_pona.svg/200px-Toki_pona.svg.png'
+  base+'pona'
+  version+[0 0 1]
+  license+'MIT'
+  website+'https://example.com'
+==
