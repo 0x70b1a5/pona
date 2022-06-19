@@ -1,12 +1,12 @@
 /-  pona
 /+  rudder, ilo
 
-^-  (page:rudder (list ale:pona) action:pona)
+^-  (page:rudder (list toki:pona) action:pona)
 
 |_  $:  
     =bowl:gall  
     *
-    ales=(list ale:pona)
+    tokis=(list toki:pona)
   ==  
 
 ++  build

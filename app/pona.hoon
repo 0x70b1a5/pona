@@ -1,7 +1,7 @@
 /-  pona, webpage
 /+  server, verb, default-agent, dbug, rudder, ilo
 ::
-/~  pages  (page:rudder (list ale:pona) action:pona)  /app/pona/webui
+/~  pages  (page:rudder (list toki:pona) action:pona)  /app/pona/webui
 ::
 |%
 +$  versioned-state
@@ -9,7 +9,7 @@
   ==
 ::
 +$  state-0
-  $:  [%0 ales=(list ale:pona)]
+  $:  [%0 tokis=(list toki:pona)]
   ==
 ::
 +$  card  card:agent:gall
@@ -33,7 +33,7 @@
 ++  on-init
   ^-  (quip card _this)
   ~&  >  '%pona initialized successfully'
-  =.  state  [%0 *(list ale:pona)]
+  =.  state  [%0 *(list toki:pona)]
   :_  this
   :~  [%pass /eyre/connect %arvo %e %connect [~ /[dap.bowl]] dap.bowl]
   ==
@@ -95,8 +95,8 @@
       :: get text by id
       ::
       @
-      ~&  >  ales.state
+      ~&  >  tokis.state
     :_  state
-    ~[[%give %fact ~[/ales] [%atom !>(ales.state)]]]
+    ~[[%give %fact ~[/tokis] [%atom !>(tokis.state)]]]
   ==
 --
