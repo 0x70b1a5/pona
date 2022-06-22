@@ -32,13 +32,31 @@
         ==
         ;main
 
-          sewi taso li pona
+          ; sewi taso li pona
+
+          ;*  %-  head 
+              %^  spin  tokis  0
+              |=  [t=toki:pona i=@ud]
+              [(kalama t i) +(i)]
+
+          ;form(method "post")
+            ;textarea
+              =name         "toki"
+              =placeholder  "o sitelen e toki..."
+              =rows         "2"
+              =cols         "40";
+            ;input(type "submit", value "add", name "add");
+          ==
         ==
         ;footer
           © nunya business ventures llc
         ==
       ==
     ==
+  ++  kalama
+  |=  [t=toki:pona i=@ud]
+  ^-  manx
+  ;p:"{(sitelen:ilo t)}"
   --
 ++  argue
   |=  [headers=header-list:http body=(unit octs)]
@@ -46,8 +64,8 @@
   =/  args=(map @t @t)
     ?~(body ~ (frisk:rudder q.u.body))
   ?:  &((~(has by args) 'add') (~(has by args) 'toki'))
-    :: [%add toki=(trip (~(got by args) 'toki'))]
-    ~
+    =/  t  (ante:ilo (trip (~(got by args) 'toki')))
+    [%add toki=t]
   ~
 ++  final  (alert:rudder 'pona' build)
 --

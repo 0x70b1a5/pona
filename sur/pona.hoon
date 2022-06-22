@@ -3,25 +3,27 @@
     $%  [%add toki=toki]
         [%mod toki=toki]
         [%del id=@ud]
+        [%get id=@ud]
     ==
 +$  toki      (list linja)
-+$  linja     [(list ijo) pini ~]
++$  linja     [(list ijo) pini]
 +$  pini      $%  [%dot ~] 
-                  [%zap ~] 
+                  [%gap ~]
+                  [%sig ~]
                   [%wut ~]
+                  [%zap ~] 
               ==
 +$  ijo       $?  nimi 
                   kipisi
                   kon
               ==
 +$  kon       $%  [%ace ~]
-                  [%gap ~]
               ==  
-+$  kipisi    $%  [%com ~]
-                  [%col ~]
++$  kipisi    $%  [%col ~]
+                  [%com ~]
                   [%doq ~]
-                  [%soq ~]
                   [%mic ~]
+                  [%soq ~]
               ==
 +$  nimi      @tas
 --

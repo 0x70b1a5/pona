@@ -62,6 +62,40 @@
     =^  cards  state
     (handle-action:main !<(action:pona vase))
     [cards this]
+    ::
+      %handle-http-request
+    =;  out=(quip card:agent:gall _tokis.state)
+      [-.out this(tokis.state +.out)]
+    %.
+      :+  bowl
+        !<(order:rudder vase)
+      tokis.state
+    %:  (steer:rudder _tokis.state action:pona)
+      pages
+      :: a destructured path w a :site path and a file :ext (optional)
+      |=  =trail:rudder  
+      ^-  (unit place:rudder)  :: $place is either a %page or a redirect %away
+      :: remove '/pona' from the url
+      ?~  site=(decap:rudder /pona site.trail)  ~  
+      ?+  u.site  ~
+      ::route        `[?(%page %away) auth? %page-name]
+        ~            `[%page & %index]  :: no trail - index
+        [%index ~]   `[%away (snip site.trail)]  :: redirect to /
+        [@ ~]        `[%page & %ken]
+        [@ %edit ~]  `[%page & %edit]
+      ==
+    ::
+      |=  =order:rudder  ::  the "Fallback Function" (takes the full httpreq)
+      ^-  [[(unit reply:rudder) (list card:agent:gall)] _tokis.state]
+      =;  msg=@t  [[`[%code 404 msg] ~] tokis.state]
+      %+  rap  3
+      :~  'couldn\'t find that page, sorry'
+      ==
+    ::
+      |=  act=action:pona
+      ^-  $@(@t [brief:rudder (list card:agent:gall) _tokis.state])
+      ``tokis:(handle-action:main act)
+    ==
   ==
 ::
 ++  on-arvo
@@ -92,10 +126,16 @@
   |=  =action:pona
   ^-  (quip card _state)
   ?-    -.action
-      :: get text by id
+      ::  add a toki
+      ::
+      %add
+    =.  tokis.state  (weld tokis.state ~[toki.action])
+    :_  state
+    ~[[%give %fact ~[/tokis] [%atom !>(tokis.state)]]]
+      :: print tokis
       ::
       @
-      ~&  >  tokis.state
+    ~&  >  tokis.state
     :_  state
     ~[[%give %fact ~[/tokis] [%atom !>(tokis.state)]]]
   ==
